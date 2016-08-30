@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class eventos extends Model
 {
-    protected $fillable = ['nomeeventos','valoreventos','arquivoeventos','datainicioeventos','dataterminoeventos','image'];
+    protected $fillable = ['nomeeventos','valoreventos','arquivoeventos','datainicioeventos','dataterminoeventos','vagas','image'];
 
 
     /**
@@ -17,5 +17,6 @@ class eventos extends Model
     {
         return $this->hasMany('App\Matriculas');
     }
+    
     
 }

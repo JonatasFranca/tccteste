@@ -34,10 +34,17 @@
             {!! Form::text('arquivoeventos', $eventos->arquivoeventos, ['class'=>'form-control']) !!}
         </div>
         <div class="form-group">
-            {!! Form::label('image', "$eventos->image") !!}
+            {!! Form::label('vagas', 'Vagas') !!}
+            {!! Form::text('vagas', $eventos->vagas, ['class'=>'form-control']) !!}
+        </div>
+        <div class="form-group">
+            {!! Form::label('image', "Imagem") !!}
             {!! Form::file('image', ['class'=>'image']) !!}
         </div>
-
+        <div class="form-group">
+            {!! Form::label('pdf', "PDF") !!}
+            {!! Form::file('pdf', ['class'=>'file']) !!}
+        </div>
         <div class="form-group">
             {!! Form::submit('Salvar alterações', ['class'=>'btn btn-primary']) !!}
         </div>

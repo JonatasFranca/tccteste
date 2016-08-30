@@ -29,6 +29,7 @@ class EventosRequest extends Request
             'arquivoeventos' => '',
             'datainicioeventos' => 'required',
             'dataterminoeventos' => 'required',
+            'vagas'=>'required',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
 
 

@@ -19,22 +19,25 @@
             @foreach($eventos as $eventos)
                 <tr>
                     <td>{{ $eventos->nomeeventos }}</td>
-                    <td>{{ $eventos->datainicioeventos }}</td>
-                    <td></td>
+                    <td>{{date('d/m/Y', strtotime($eventos->datainicioeventos)) }}</td>
+                    <td>{{date('d/m/Y', strtotime($eventos->dataterminoeventos)) }}</td>
                     <td>{{ $eventos->valoreventos }}</td>
                     <td> <a href="{{ route('eventos.edit',['id'=>$eventos->id]) }}"
                             class="btn-sm btn-success">Editar</a>
                         <a href="{{ route('eventos.destroy',['id'=>$eventos->id]) }}" class="btn-sm btn-danger">Remover</a>
-                        <a href="{{ route('matricula.create',['id'=>$eventos->id]) }}" class="btn-sm btn-primary">Matricular</a>
+
                         <a href="{{ route('matricula.chamada',['id'=>$eventos->id]) }}" class="btn-sm btn-default">Lista de Matriculados</a>
                         <a href="{{ route('matricula.presenca',['id'=>$eventos->id]) }}" class="btn-sm btn-default">Confirmar presença</a>
                     </td>
 
-                    </tr>
-
-@endforeach
-
+                </tr>
+            @endforeach
             </tbody>
-        </table>
+         </table>
+        <a href="{{ route('eventos.graficos') }}" class="btn-sm btn-primary">Gráfico dos Eventos</a>
+        <a href="{{ route('matricula.grafico',['id'=>$eventos->id]) }}" class="btn-sm btn-primary">Grafico dos Usuários por sexo</a>
     </div>
+
+
+
 @endsection

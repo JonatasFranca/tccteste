@@ -7,6 +7,10 @@
                 <div class="panel panel-default coupon">
                     <div class="panel-heading" id="head">
                         <div class="panel-title" id="title">
+
+
+
+                                <p>{{$total}}</p>
                                 <h1>Matricule-se </h1>
                                 <h1>Nome do Evento: {{$eventos->nomeeventos}}</h1>
                                 <h2>Valor: {{$eventos->valoreventos}}</h2>
@@ -23,10 +27,15 @@
                                 {!! Form::open(['route'=>'matricula.store'])!!}
                                 {!! Form::hidden('eventos_id', $eventos->id) !!}
                                 {!! Form::hidden('user_id', Auth::user()->id) !!}
+
+
+                            @if($total < $eventos->vagas)
                                 <div class="form-group">
                                     {!! Form::submit('Matricular', ['class'=>'btn btn-primary']) !!}
                                 </div>
-
+                            @else
+                                <font color="red"><h1 COLOR="red">Não há vagas</h1></font>
+                            @endif
                                 {!! Form::close() !!}
                         </div>
                     </div>

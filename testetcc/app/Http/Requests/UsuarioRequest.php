@@ -28,6 +28,7 @@ class UsuarioRequest extends Request
             'email' => 'required',
             'password' => 'required',
             'fotousuario' => '',
+            'sexo'=>'required'
            
 
 

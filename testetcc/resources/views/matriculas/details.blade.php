@@ -12,6 +12,7 @@
                                 <h2>Valor: {{ $matriculas->eventos->valoreventos}} </h2>
                                 <h2>Data de Início: {{ date('d/m/Y', strtotime($matriculas->eventos->datainicioeventos)) }}</h2>
                                 <h2>Data de Término: {{ date('d/m/Y', strtotime($matriculas->eventos->dataterminoeventos)) }}</h2>
+                            <div><a href="{{ asset('download/' . $matriculas->eventos->nomeeventos .'.'.'pdf' )}}"class="btn-sm btn-primary">Download PDF do Evento</a> </div>
                             <div class="embed-responsive embed-responsive-4by3">
                                 <iframe width="854" height="480" src="{{$matriculas->eventos->arquivoeventos}}" frameborder="0" allowfullscreen></iframe>
                             </div>
@@ -37,6 +38,9 @@
                                     {!! Form::submit('Receber detalhes por email') !!}
                                 {!! Form::close() !!}
                             </div>
+
+
+
 
                             <div><a href="{{ route('matricula.lista') }}" class="btn-sm btn-primary">Lista de Matrículas</a></div>
                         </div>

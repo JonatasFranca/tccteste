@@ -30,7 +30,7 @@
                                 $n = '2';
                                 ?>
                                 @if ($matricula->presenca == $n)
-                                        <a href="{{ route('matricula.cracha',['id'=>$matricula->id]) }}" class="btn-sm btn-success"> <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Disponível </a>
+                                        <a href="{{ route('matricula.certificado',['id'=>$matricula->id]) }}" class="btn-sm btn-success"> <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Disponível </a>
 
                                 @else
                                     <span class="glyphicon glyphicon-remove" aria-hidden="true">Indisponível</span>

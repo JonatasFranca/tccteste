@@ -6,6 +6,7 @@ use App\Eventos;
 use Auth;
 use App\User;
 use PDF;
+use DB;
 
 
 
@@ -76,6 +77,15 @@ class MatriculasController extends Controller
         return $pdf->download('cracha.pdf');
         
     }
+    public function certificado($id)
+    {
+        $matriculas = Matriculas::find($id);
+        //$eventos = Eventos::find($id);
+
+        $pdf = PDF::loadView('matriculas.certificado',compact('matriculas'));
+        return $pdf->setOrientation('landscape')->download('certificado.pdf');
+
+    }
     public function presenca($id)
     {
         if (Auth::user()-> id == 8) {
@@ -84,8 +94,12 @@ class MatriculasController extends Controller
             $eventos = Eventos::find($id);
             $user = User::all();
 
+            $total = DB::table('matriculas')->where('eventos_id', '=',$eventos->id)->count();
+            
+       
 
-            return view('matriculas.presenca', compact('matriculas', 'eventos', 'user'));
+
+            return view('matriculas.presenca', compact('matriculas', 'eventos', 'user','total'));
         }
         else return view('eventos.erroadmin');
 
@@ -113,10 +127,21 @@ class MatriculasController extends Controller
     }
     public function create($id)
     {
-
+        $matricula = Matriculas::all();
         $eventos = Eventos::find($id);
-        return view('matriculas.create', compact('eventos'));
+        $total = DB::table('matriculas')->where('eventos_id', '=',$eventos->id)->count();
+        return view('matriculas.create', compact('eventos','matricula','total'));
        
+        
+    }
+    public function gerargrafico($id){
+
+        $matricula = Matriculas::all();
+        $eventos = Eventos::find($id);
+        $user = User::all();
+        $totalf = DB::table('users')->where('sexo', '=',"feminino")->count();
+        $totalm = DB::table('users')->where('sexo', '=',"masculino")->count();
+        return view('matriculas.grafico', compact('eventos','matricula','totalf','totalm','user'));
         
     }
     public function store( MatriculasRequest $request)

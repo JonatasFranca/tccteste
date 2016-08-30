@@ -8,6 +8,7 @@ use App\User;
 use Redirect;
 use App\Http\Requests;
 use App\Eventos;
+use App\Matriculas;
 use App\Http\Requests\EventosRequest;
 class EventosController extends Controller
 {
@@ -21,8 +22,9 @@ class EventosController extends Controller
     {
         if (Auth::user()-> id == 8){
         $eventos = Eventos::all();
-
-        return view('eventos.index', ['eventos' => $eventos]);
+        $matricula = Matriculas::all();
+            $user = User::all();
+        return view('eventos.index', ['eventos' => $eventos,'matricula' => $matricula,'user' => $user]);
         }
         else return view('eventos.erroadmin');
 
@@ -34,9 +36,10 @@ class EventosController extends Controller
 
     public function show()
     {
+        $matricula = Matriculas::all();
         $eventos = Eventos::all();
 
-        return view('eventos.show', ['eventos' => $eventos]);
+        return view('eventos.show', ['eventos' => $eventos,'matricula'=>$matricula]);
     }
 
     public function create()
@@ -50,9 +53,31 @@ class EventosController extends Controller
     public function store(EventosRequest $request)
     {
         if (Auth::user()-> id == 8) {
-            
-            dd($request);
-            Eventos::create($request->all());
+
+            $input= $request->all();
+
+            Eventos::create($input);
+
+            $image = $request->file('image');
+
+
+
+            $input['imagename'] = $request->nomeeventos.'.'.$image->getClientOriginalExtension();
+
+            $destinationPath = public_path('css/image');
+
+            $image->move($destinationPath, $input['imagename']);
+
+
+            $pdf = $request->file('pdf');
+
+
+
+            $input['pdfname'] = $request->nomeeventos.'.'.$pdf->getClientOriginalExtension();
+
+            $destinationPath = public_path('css/download');
+
+            $pdf->move($destinationPath, $input['pdfname']);
 
 
             return redirect()->route('eventos');
@@ -83,13 +108,45 @@ class EventosController extends Controller
         if (Auth::user()-> id == 8) {
 
             $produto = Eventos::find($id)->update($request->all());
+
+            $image = $request->file('image');
+
+
+
+            $input['imagename'] = $request->nomeeventos.'.'.$image->getClientOriginalExtension();
+
+            $destinationPath = public_path('css/image');
+
+            $image->move($destinationPath, $input['imagename']);
+
+            $pdf = $request->file('pdf');
+
+
+
+            $input['pdfname'] = $request->nomeeventos.'.'.$pdf->getClientOriginalExtension();
+
+            $destinationPath = public_path('css/download');
+
+            $pdf->move($destinationPath, $input['pdfname']);
+            
+            
             return redirect()->route('eventos');
         }
         else return view('eventos.erroadmin');
 
     }
+    
+    public function gerargraficos()
+    {
+        if (Auth::user()->id == 8) {
+            $eventos = Eventos::all();
+            $matricula = Matriculas::all();
+            $user = User::all();
+            return view('eventos.graficos', ['eventos' => $eventos, 'matricula' => $matricula, 'user' => $user]);
+        } else return view('eventos.erroadmin');
+    }
 
-    public function sendEmail(Request $request)
+public function sendEmail(Request $request)
     {
         $data = $request->only('name', 'email','evento','data');
 

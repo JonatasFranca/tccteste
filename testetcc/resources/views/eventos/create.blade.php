@@ -12,7 +12,7 @@
             </ul>
         @endif
 
-        {!! Form::open(['route'=>'eventos.store','enctype' => 'multipart/form-data'])!!}
+        {!! Form::open(array('route' => 'eventos.store','enctype' => 'multipart/form-data'))!!}
         <div class="form-group">
             {!! Form::label('nomeeventos', 'Nome:') !!}
             {!! Form::text('nomeeventos', null, ['class'=>'form-control']) !!}
@@ -30,14 +30,24 @@
             {!! Form::text('dataterminoeventos', null, ['class'=>'form-control data']) !!}
         </div>
 
+
         <div class="form-group">
             {!! Form::label('arquivoeventos', 'Arquivo:') !!}
 
             {!! Form::text('arquivoeventos', null, ['class'=>'form-control']) !!}
         </div>
+        <div class="form-group">
+            {!! Form::label('vagas', 'Vagas:') !!}
+            {!! Form::text('vagas', null, ['class'=>'form-control data']) !!}
+        </div>
         <div class="image">
             {!! Form::label('image', 'Imagem:') !!}
             {!! Form::file('image', array('class' => 'image')) !!}
+
+        </div>
+        <div class="form-group">
+            {!! Form::label('pdf', 'PDF:') !!}
+            {!! Form::file('pdf', array('class' => 'file')) !!}
 
         </div>
 
