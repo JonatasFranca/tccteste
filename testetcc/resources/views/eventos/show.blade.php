@@ -30,7 +30,7 @@
                                         <li> Data Início {{ date('d/m/Y', strtotime($eventos->datainicioeventos)) }}</li>
 
                                     </ul>
-                                    <p>Número de vagas: {{$eventos->vagas}}</p>
+
                                 </div>
                                 <div class="col-md-3">
                                     <div class="offer">

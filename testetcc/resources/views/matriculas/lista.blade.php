@@ -42,6 +42,7 @@
                         <td>
                             <a href="{{ route('matricula.details',['id'=>$matricula->id]) }}" class="btn-sm btn-primary">Detalhes</a>
                             <a href="{{ route('matricula.cracha',['id'=>$matricula->id]) }}" class="btn-sm btn-default">Imprimir crachá</a>
+                            <a href="{{ route('matricula.destroy',['id'=>$matricula->id]) }}" class="btn-sm btn-danger">Cancelar matrícula</a>
 
                         </td>
                     </tr>

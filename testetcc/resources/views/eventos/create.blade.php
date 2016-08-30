@@ -18,21 +18,21 @@
             {!! Form::text('nomeeventos', null, ['class'=>'form-control']) !!}
         </div>
         <div class="form-group">
-            {!! Form::label('valoreventos', 'Valor:') !!}
+            {!! Form::label('valoreventos', 'Valor:(100,00)') !!}
             {!! Form::text('valoreventos', null, ['class'=>'form-control']) !!}
         </div>
         <div class="form-group">
-            {!! Form::label('datainicioeventos', 'Data Inicio:') !!}
+            {!! Form::label('datainicioeventos', 'Data Inicio:(2016-12-12)') !!}
             {!! Form::text('datainicioeventos', null, ['class'=>'form-control']) !!}
         </div>
         <div class="form-group">
-            {!! Form::label('dataterminoeventos', 'Data Término:') !!}
+            {!! Form::label('dataterminoeventos', 'Data Término:(2016-12-12)') !!}
             {!! Form::text('dataterminoeventos', null, ['class'=>'form-control data']) !!}
         </div>
 
 
         <div class="form-group">
-            {!! Form::label('arquivoeventos', 'Arquivo:') !!}
+            {!! Form::label('arquivoeventos', 'Url do Vídeo:') !!}
 
             {!! Form::text('arquivoeventos', null, ['class'=>'form-control']) !!}
         </div>
@@ -41,7 +41,7 @@
             {!! Form::text('vagas', null, ['class'=>'form-control data']) !!}
         </div>
         <div class="image">
-            {!! Form::label('image', 'Imagem:') !!}
+            {!! Form::label('image', 'Imagem:(.jpg)') !!}
             {!! Form::file('image', array('class' => 'image')) !!}
 
         </div>

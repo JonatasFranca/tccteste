@@ -14,7 +14,7 @@
             </tr>
             </thead>
             <tbody>
-            {{$total}}
+           
 
 
             @foreach($eventos->matriculas as $matricula)

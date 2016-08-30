@@ -151,5 +151,12 @@ class MatriculasController extends Controller
 
         return redirect()->route('matricula.lista');
     }
-
+    public function destroy($id)
+    {
+        
+            Matriculas::find($id)->delete();
+            return redirect()->route('matricula.lista');
+        
+       
+    }
 }

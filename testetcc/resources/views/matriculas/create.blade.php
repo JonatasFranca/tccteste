@@ -10,7 +10,7 @@
 
 
 
-                                <p>{{$total}}</p>
+
                                 <h1>Matricule-se </h1>
                                 <h1>Nome do Evento: {{$eventos->nomeeventos}}</h1>
                                 <h2>Valor: {{$eventos->valoreventos}}</h2>
@@ -29,7 +29,7 @@
                                 {!! Form::hidden('user_id', Auth::user()->id) !!}
 
 
-                            @if($total < $eventos->vagas)
+                            @if($total <= $eventos->vagas)
                                 <div class="form-group">
                                     {!! Form::submit('Matricular', ['class'=>'btn btn-primary']) !!}
                                 </div>
@@ -38,9 +38,13 @@
                             @endif
                                 {!! Form::close() !!}
                         </div>
+                        <a class="btn btn-default" href="{{ url('/') }}">
+                            Voltar
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
+
     </div>
 @endsection

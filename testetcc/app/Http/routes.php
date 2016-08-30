@@ -56,7 +56,7 @@ Route::group(['prefix'=>'matricula','where'=>['id'=>'[0-9]+']], function() {
     Route::get('{id}/edit',['as'=>'matricula.edit', 'uses'=>'MatriculasController@edit']);
     Route::put('{id}/update',['as'=>'matricula.update', 'uses'=>'MatriculasController@update']);
     Route::get('{id}/grafico',['as'=>'matricula.grafico', 'uses'=>'MatriculasController@gerargrafico']);
-
+    Route::get('{id}/destroy',['as'=>'matricula.destroy', 'uses'=>'MatriculasController@destroy']);
     
   
 });
